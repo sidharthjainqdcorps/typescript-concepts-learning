@@ -177,4 +177,36 @@ kgToLbs('10kgs');
 
 // let weight : number & string; // can be any or both at the same time
 
- 
+ // optional chaining -- ? -> optional operator
+
+
+type Customer = {
+    // birthday: Date
+
+    //making birthday optional
+    birthday?:Date
+};
+
+function getCustomer(id:number):Customer | null | undefined{
+    return id === 0 ? null :{birthday:new Date};
+}
+
+// let customer = getCustomer(0); // ans = undefined
+// if(customer !==null && customer !== undefined){ // either of this full stmt - Optional property access operator can be used
+
+// console.log(customer.birthday);  
+
+let customer = getCustomer(1); // ans = 2022-09-03T17:19:31.120Z <-- date
+// console.log(customer?.birthday);   // ? operator used  // output = undefined if - let customer = getCustomer(0);
+
+console.log(customer?.birthday?.getFullYear());   // if ? not used with biortdhay here - error- Object is possibly 'undefined'.
+// output - 2022
+
+//optional element access operator
+// customer?.[0]
+
+// optional call
+
+let log: any = null;
+// log('a'); //error - Identifier expected.
+log?.('a'); // no error no output
